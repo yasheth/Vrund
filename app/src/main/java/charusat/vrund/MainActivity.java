@@ -14,9 +14,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    public TabLayout tabLayout;
+    public ViewPager viewPager;
     private Toolbar toolbar;
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
