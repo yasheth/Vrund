@@ -1,54 +1,49 @@
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_recycler_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ded5e8"
-    android:paddingLeft="@dimen/activity_horizontal_margin_more"
-    android:paddingRight="@dimen/activity_horizontal_margin_more"
-    tools:context="charusat.vrund.Home_Fragment">
+    android:background="#fff"
+    android:orientation="vertical"
+    android:scrollbars="vertical"
+    tools:context="charusat.vrund.Home_Fragment"
+    tools:paddingEnd="16dp"
+    tools:paddingStart="16dp"
+    tools:paddingTop="16dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center_horizontal"
-        android:text="HOME FRAGMENT CONTENT"
-        android:textSize="20sp"
-        android:textStyle="italic" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:gravity="bottom|end"
-            android:orientation="horizontal">
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="16dp"-->
+    <!--android:gravity="bottom|end"-->
+    <!--android:orientation="horizontal">-->
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                android:src="@drawable/k1"
-                android:contentDescription="@string/kalash_blue" />
+    <!--<ImageView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:contentDescription="@string/kalash_blue"-->
+    <!--android:src="@drawable/k1" />-->
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                android:contentDescription="@string/kalash_yellow"
-                android:src="@drawable/k2" />
+    <!--<ImageView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:contentDescription="@string/kalash_yellow"-->
+    <!--android:src="@drawable/k2" />-->
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                android:contentDescription="@string/kalash_magenta"
-                android:src="@drawable/k4" />
-        </LinearLayout>
-    </LinearLayout>
-</android.support.v4.widget.NestedScrollView>
+    <!--<ImageView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:contentDescription="@string/kalash_magenta"-->
+    <!--android:src="@drawable/k4" />-->
+
+    <!--</LinearLayout>-->
+
+
+</android.support.v7.widget.RecyclerView>
 
