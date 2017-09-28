@@ -3,4 +3,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="kalash_magenta">kalash magenta</string>
+    <string name="kalash_yellow">kalash yellow</string>
+    <string name="kalash_blue">kalash blue</string>
 </resources>

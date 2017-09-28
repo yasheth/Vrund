@@ -23,9 +23,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             android:layout_marginTop="15dp"
-            android:layout_weight="3"
             android:gravity="bottom|end"
             android:orientation="horizontal">
 
@@ -33,18 +32,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:src="@drawable/k1" />
+                android:src="@drawable/k1"
+                android:contentDescription="@string/kalash_blue" />
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_weight="1"
+                android:contentDescription="@string/kalash_yellow"
                 android:src="@drawable/k2" />
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_weight="1"
+                android:contentDescription="@string/kalash_magenta"
                 android:src="@drawable/k4" />
         </LinearLayout>
     </LinearLayout>
