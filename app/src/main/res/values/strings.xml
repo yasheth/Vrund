@@ -6,4 +6,5 @@
     <string name="kalash_magenta">kalash magenta</string>
     <string name="kalash_yellow">kalash yellow</string>
     <string name="kalash_blue">kalash blue</string>
+    <string name="image_for_displaying_info">Image for displaying info</string>
 </resources>
