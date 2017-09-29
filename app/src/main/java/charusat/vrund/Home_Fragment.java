@@ -24,6 +24,7 @@ public class Home_Fragment extends Fragment {
 
     public Home_Fragment() {
         // Required empty public constructor
+        setArrayListItems();
     }
 
 
@@ -33,7 +34,6 @@ public class Home_Fragment extends Fragment {
         // Inflate the layout for this fragment
         View inflateView = inflater.inflate(R.layout.fragment_home, container, false);
         //TODO: Display Content
-        setArrayListItems();
         RecyclerView homeRecyclerView = (RecyclerView) inflateView.findViewById(R.id.home_recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(inflateView.getContext());
         homeRecyclerView.setLayoutManager(layoutManager);
@@ -45,17 +45,14 @@ public class Home_Fragment extends Fragment {
 
     private void setArrayListItems() {
 
-        //DUMMY LINKS
-        cardItemArrayList.add(new CardItem("https://i.pinimg.com/originals/c2/24/ac/c224ac793226ce5fca01277c51c6129a.jpg", "Item 1"));
-        cardItemArrayList.add(new CardItem("https://cdn.dribbble.com/users/230193/screenshots/1793458/google-dribbble.jpg", "Item 2"));
-        cardItemArrayList.add(new CardItem("https://cdn.dribbble.com/users/230193/screenshots/2914784/archery-dribbble_1x.jpg", "Item 3"));
-        cardItemArrayList.add(new CardItem("http://www.gizmobolt.com/wp-content/uploads/2014/10/bkg_03_march-900x900.jpg", "Item 4"));
-        cardItemArrayList.add(new CardItem("http://www.gizmobolt.com/wp-content/uploads/2014/10/bkg_06_june-900x900.jpg", "Item 5"));
-        cardItemArrayList.add(new CardItem("http://www.gizmobolt.com/wp-content/uploads/2014/10/bkg_05_may-900x900.jpg", "Item 6"));
-        cardItemArrayList.add(new CardItem("http://www.gizmobolt.com/wp-content/uploads/2014/10/bkg_10_october-900x900.jpg", "Item 7"));
-        cardItemArrayList.add(new CardItem("https://wallpapershome.com/images/pages/ico_h/3434.jpg", "Item 8"));
-        cardItemArrayList.add(new CardItem("https://articles-images.sftcdn.net/wp-content/uploads/sites/3/2016/04/google-calendar-goals-664x374-664x374.jpg", "Item 9"));
-        cardItemArrayList.add(new CardItem("https://i.pinimg.com/736x/81/24/9b/81249b49ff7c1541ff73709fb6b43ff8--calendar-app-google-calendar.jpg", "Item 10"));
+        cardItemArrayList.add(new CardItem("http://vrund.in/wp-content/uploads/2016/07/14716357_910830349019067_3354529134917386913_n.jpg", R.string.home_title_string));
+        cardItemArrayList.add(new CardItem("http://vrund.in/wp-content/uploads/2016/07/14589745_910830605685708_7534554031571171969_o.jpg", R.string.home_about_one_string));
+        cardItemArrayList.add(new CardItem("http://vrund.in/wp-content/uploads/2016/07/v16-p8.png", R.string.home_about_two_string));
+        cardItemArrayList.add(new CardItem("http://vrund.in/wp-content/uploads/2016/07/v16-p4.png ", R.string.home_about_three_string));
+        cardItemArrayList.add(new CardItem("http://vrund.in/wp-content/uploads/2016/07/v16-p6.png", R.string.home_about_four_string));
+        cardItemArrayList.add(new CardItem("http://vrund.in/wp-content/uploads/2016/07/v16-p2.png", R.string.home_about_five_string));
+        cardItemArrayList.add(new CardItem("http://vrund.in/wp-content/uploads/2016/07/v16-p7.png", R.string.home_about_six_string));
+        cardItemArrayList.add(new CardItem("http://vrund.in/wp-content/uploads/2016/07/v16-p5.png", R.string.home_about_seven_string));
     }
 
 }

@@ -6,9 +6,9 @@ package charusat.vrund.home;
 
 public class CardItem {
     private String imageResourceUrl;
-    private String textLabel;
+    private int textLabel;
 
-    public CardItem(String imageResourceUrl, String textLabel) {
+    public CardItem(String imageResourceUrl, int textLabel) {
         this.imageResourceUrl = imageResourceUrl;
         this.textLabel = textLabel;
     }
@@ -17,7 +17,7 @@ public class CardItem {
         return imageResourceUrl;
     }
 
-    String getTextLabel() {
+    int getTextLabel() {
         return textLabel;
     }
 }
