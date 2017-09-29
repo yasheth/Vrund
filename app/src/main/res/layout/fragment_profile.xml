@@ -25,12 +25,14 @@
 
         <android.support.v7.widget.CardView
             android:id="@+id/card_view"
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_margin="5dp"
-            android:elevation="3dp"
-            card_view:cardCornerRadius="5dp">
+            android:elevation="5dp"
+            card_view:cardElevation="8dp"
+            card_view:cardCornerRadius="8dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -91,23 +93,52 @@
                     android:paddingTop="10dp"
                     android:text="Participation ID : M_14IT126"
                     android:textColor="@color/colorPrimaryDark"
+                    android:layout_marginBottom="5dp"
                     android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/info"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/p_id"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="10dp"
-                    android:text="Information:\n\n#Traditional Dress Code is compulsary.\n\n#Bring ID Card for security Verification.\n\n#Only Registered Students will be allowed to enter garba ground.\n\n#No type of nuisance will be entertained and Strict actions will be taken against the rule breakers."
-                    android:textColor="@color/colorAccent"
-                    android:textSize="18sp" />
-
 
             </RelativeLayout>
 
         </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="100dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:elevation="5dp"
+            card_view:cardCornerRadius="8dp"
+            card_view:cardElevation="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/dandiya"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/dandiyaraas"
+                    android:clickable="true"
+                    android:scaleType="fitXY" />
+
+                <TextView
+                    android:id="@+id/count2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/dandiya"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:text="@string/instruction"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
 
         <LinearLayout
             android:layout_width="match_parent"

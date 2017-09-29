@@ -15,7 +15,13 @@
     <string name="home_about_five_string">Central Council heartily invites you to the annual garba festival of CHARUSAT. Don’t forget to register yourself for your presence. College ID Card is mandatory for the entry.</string>
     <string name="home_about_six_string">Having dinner together as a family will be our pleasure. Don’t forget to carry your college ID card during the refreshment.</string>
     <string name="home_about_seven_string">Prizes and Awards will be awarded to best performance and best dressing participant. But before that don’t forget to register yourself.</string>
-
-    
+    <string name="instruction"><b>Instruction : \n</b>
+        <ol>
+        <li>Traditional Dress Code is compulsary.\n</li> 
+        <li>Bring ID Card for security Verification.\n</li>
+        <li>Only Registered Students will be allowed to enter garba ground.\n</li> 
+        <li>No type of nuisance will be entertained and Strict actions will be taken against the rule breakers.\n</li>
+        </ol>
+	</string>
     
 </resources>
