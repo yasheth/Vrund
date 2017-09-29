@@ -46,7 +46,7 @@
                     android:scaleType="fitXY" />
 
                 <TextView
-                    android:id="@+id/title"
+                    android:id="@+id/p_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/thumbnail"
@@ -58,10 +58,10 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/count0"
+                    android:id="@+id/p_rollno"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/title"
+                    android:layout_below="@id/p_name"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:paddingTop="10dp"
@@ -70,10 +70,10 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/count"
+                    android:id="@+id/p_comp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/count0"
+                    android:layout_below="@id/p_rollno"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:paddingTop="10dp"
@@ -82,10 +82,10 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/count1"
+                    android:id="@+id/p_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/count"
+                    android:layout_below="@id/p_comp"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:paddingTop="10dp"
@@ -94,10 +94,10 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/count2"
+                    android:id="@+id/info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/count1"
+                    android:layout_below="@id/p_id"
                     android:paddingLeft="10dp"
                     android:paddingTop="10dp"
                     android:text="Information:\n\n#Traditional Dress Code is compulsary.\n\n#Bring ID Card for security Verification.\n\n#Only Registered Students will be allowed to enter garba ground.\n\n#No type of nuisance will be entertained and Strict actions will be taken against the rule breakers."
