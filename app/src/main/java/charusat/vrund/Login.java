@@ -50,6 +50,15 @@ public class Login extends AppCompatActivity {
             rollNumber = (TextView) findViewById(R.id.et_rollno);
             mobile = (TextView) findViewById(R.id.et_mobile);
 
+            register.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(Login.this, SignUp.class);
+                    startActivity(i);
+                }
+            });
+
+
             login.setOnClickListener(new View.OnClickListener()
             {
                  @Override
@@ -95,15 +104,19 @@ public class Login extends AppCompatActivity {
 
                          }
                      });
-                     register.setOnClickListener(new View.OnClickListener() {
-                         @Override
-                         public void onClick(View v) {
-                             Intent i = new Intent(Login.this, SignUp.class);
-                             startActivity(i);
-                         }
-                     });
                  }
              });
+        }
+        else
+        {
+            if (sharedpreferences.getBoolean(SignUp.Organiser, false)) {
+                i = new Intent(Login.this, MainActivity_Organiser.class);
+            } else {
+                i = new Intent(Login.this, MainActivity.class);
+            }
+            startActivity(i);
+            finish();
+
         }
     }
 }
