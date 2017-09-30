@@ -33,7 +33,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent i;
-                if (rollNumber.getText().toString().equals("14IT120")) {
+                if (rollNumber.getText().toString().equals("a")) {
                     i = new Intent(Login.this, MainActivity_Organiser.class);
                 }
                 else{
