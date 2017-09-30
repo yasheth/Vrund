@@ -35,6 +35,7 @@
                 android:breakStrategy="simple"
                 android:textAppearance="?android:textAppearanceLarge"
                 android:textColor="@android:color/white"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 tools:targetApi="m"
                 tools:text="Sample text for displaying something" />
