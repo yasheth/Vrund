@@ -59,17 +59,14 @@ public class Profile_Fragment extends Fragment {
         boolean ioc = sharedpreferences.getBoolean(SignUp.Comp,false);
         String id = sharedpreferences.getString(SignUp.ID,null);
 
-        p_rollno.setText(rollno);
-        p_name.setText(name);
+        p_rollno.setText("Roll Number : " + rollno);
+        p_name.setText("Name : " + name);
         if(ioc){
             p_comp.setText("Participating in Dressing and Performance competitions");
-            p_id.setText(id);
+            p_id.setText("Participation Id : " + id);
         } else {
             p_comp.setText("Not Participating in Dressing and Performance competitions");
             p_id.setVisibility(View.INVISIBLE);
         }
-
-
-
     }
 }
