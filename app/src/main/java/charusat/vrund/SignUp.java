@@ -48,6 +48,7 @@ public class SignUp extends AppCompatActivity {
     private CheckBox cb_ioc;
     private Button register;
     private TextView tv_login;
+
     private FirebaseAuth mAuth;
     private DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference();
 
