@@ -1,10 +1,13 @@
 package charusat.vrund;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class Login extends AppCompatActivity {
 
@@ -33,5 +36,28 @@ public class Login extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    public void onBackPressed() {
+        alertMessage();
+    }
+
+    public void alertMessage() {
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE: // Yes button clicked
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                        finish();
+                        break;
+                    case DialogInterface.BUTTON_NEGATIVE: // No button clicked do nothing
+                        Toast.makeText(Login.this, "Good Choice", Toast.LENGTH_LONG).show();
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Are you sure you want to Exit? :(").setPositiveButton("Yes", dialogClickListener).setNegativeButton("No", dialogClickListener).show();
     }
 }
