@@ -30,13 +30,6 @@ public class Login extends AppCompatActivity {
 
     private final String TAG = "Login";
 
-    public static final String MyPREFERENCES = "MyPrefs" ;
-    public static final String Name = "nameKey";
-    public static final String Rollno = "rollnoKey";
-    public static final String ID = "idKey";
-    public static final String Comp = "compKey";
-    public static final String Organiser = "organiserKey";
-
     SharedPreferences sharedpreferences;
 
     Intent i;
@@ -46,85 +39,98 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        sharedpreferences = getSharedPreferences(SignUp.MyPREFERENCES, Context.MODE_PRIVATE);
+        String  x = sharedpreferences.getString(SignUp.Rollno,null);
+        if(sharedpreferences.getString(SignUp.Rollno,null) == null) {
 
-        register = (Button) findViewById(R.id.bt_register);
-        login = (Button) findViewById(R.id.bt_login);
+            register = (Button) findViewById(R.id.bt_register);
+            login = (Button) findViewById(R.id.bt_login);
 
-        rollNumber = (TextView) findViewById(R.id.et_rollno);
-        mobile = (TextView) findViewById(R.id.et_mobile);
+            rollNumber = (TextView) findViewById(R.id.et_rollno);
+            mobile = (TextView) findViewById(R.id.et_mobile);
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            login.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
 
-                final String rollno = rollNumber.getText().toString().trim();
-                final String phone = mobile.getText().toString().trim();
+                    final String rollno = rollNumber.getText().toString().trim();
+                    final String phone = mobile.getText().toString().trim();
 
-                databaseRef.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        if(dataSnapshot.hasChild(rollno)){
-                            Log.d(TAG, phone+"   "+dataSnapshot.child(rollno).child("phone").getValue());
-                            if(dataSnapshot.child(rollno).child("phone").getValue().equals(phone)){
+                    databaseRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.hasChild(rollno)) {
+                                Log.d(TAG, phone + "   " + dataSnapshot.child(rollno).child("phone").getValue());
+                                if (dataSnapshot.child(rollno).child("phone").getValue().equals(phone)) {
 
-                                Log.d(TAG, dataSnapshot.child(rollno).child("name").getValue().toString());
+                                    Log.d(TAG, dataSnapshot.child(rollno).child("name").getValue().toString());
 
-                                SharedPreferences.Editor editor = sharedpreferences.edit();
-                                editor.putString(Name, dataSnapshot.child(rollno).child("name").getValue().toString());
-                                editor.putString(Rollno, rollno);
-                                editor.putString(ID, dataSnapshot.child(rollno).child("p_id").getValue().toString());
-                                editor.putBoolean(Comp, (Boolean) dataSnapshot.child(rollno).child("ioc").getValue());
-                                editor.putBoolean(Organiser, (Boolean) dataSnapshot.child(rollno).child("organiser").getValue());
-                                editor.commit();
+                                    SharedPreferences.Editor editor = sharedpreferences.edit();
+                                    editor.putString(SignUp.Name, dataSnapshot.child(rollno).child("name").getValue().toString());
+                                    editor.putString(SignUp.Rollno, rollno);
+                                    editor.putString(SignUp.ID, dataSnapshot.child(rollno).child("p_id").getValue().toString());
+                                    editor.putBoolean(SignUp.Comp, (Boolean) dataSnapshot.child(rollno).child("ioc").getValue());
+                                    editor.putBoolean(SignUp.Organiser, (Boolean) dataSnapshot.child(rollno).child("organiser").getValue());
+                                    editor.commit();
 
-                                if(sharedpreferences.getBoolean(Organiser, false)){
-                                    i = new Intent(Login.this, MainActivity_Organiser.class);
+                                    if (sharedpreferences.getBoolean(SignUp.Organiser, false)) {
+                                        i = new Intent(Login.this, MainActivity_Organiser.class);
+
+                                    } else {
+                                        i = new Intent(Login.this, MainActivity.class);
+                                    }
+                                    startActivity(i);
+                                    finish();
 
                                 } else {
-                                    i = new Intent(Login.this, MainActivity.class);
+
+                                    Log.d(TAG, "Wrong Phone Number");
                                 }
-                                startActivity(i);
-                                finish();
+
 
                             } else {
-
-                                Log.d(TAG, "Wrong Phone Number");
+                                Log.d(TAG, "Wrong Roll Number");
                             }
-
-
-                        } else{
-                            Log.d(TAG, "Wrong Roll Number");
                         }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
+
+                    /*
+                    if (rollNumber.getText().toString().equals("14IT120")) {
+
+                        i = new Intent(Login.this, MainActivity_Organiser.class);
                     }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
+                    else{
+                        i = new Intent(Login.this, MainActivity.class);
                     }
-                });
+                    */
 
-
-                /*
-                if (rollNumber.getText().toString().equals("14IT120")) {
-
-                    i = new Intent(Login.this, MainActivity_Organiser.class);
                 }
-                else{
-                    i = new Intent(Login.this, MainActivity.class);
+            });
+            register.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(Login.this, SignUp.class);
+                    startActivity(i);
                 }
-                */
+            });
+        } else {
+            if (sharedpreferences.getBoolean(SignUp.Organiser, false)) {
+                i = new Intent(Login.this, MainActivity_Organiser.class);
 
+            } else {
+                i = new Intent(Login.this, MainActivity.class);
             }
-        });
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(Login.this, SignUp.class);
-                startActivity(i);
-            }
-        });
+            startActivity(i);
+            finish();
+
+        }
     }
 
     public void onBackPressed() {
@@ -136,6 +142,9 @@ public class Login extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
                     case DialogInterface.BUTTON_POSITIVE: // Yes button clicked
+                        SharedPreferences.Editor editor = sharedpreferences.edit();
+                        editor.clear();
+                        editor.commit();
                         android.os.Process.killProcess(android.os.Process.myPid());
                         finish();
                         break;
