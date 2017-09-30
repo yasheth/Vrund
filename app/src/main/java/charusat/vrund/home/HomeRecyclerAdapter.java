@@ -1,19 +1,18 @@
 package charusat.vrund.home;
 
-import android.graphics.Color;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import charusat.vrund.R;
 
@@ -41,31 +40,31 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
     public void onBindViewHolder(HomeRecyclerAdapter.ItemsHolder holder, int position) {
         //TODO: Update items
         CardItem currentItem = cardItemArrayList.get(position);
-
-        //Random background colour
-        Random rnd = new Random();
-        int redColour = rnd.nextInt(256);
-        int greenColour = rnd.nextInt(256);
-        int blueColour = rnd.nextInt(256);
-        int color = Color.argb(255, redColour, greenColour, blueColour);
-
-        holder.homeTextCardLayout.setBackgroundColor(color);
-
-        if ((redColour * 0.299) + (greenColour * 0.587) + (blueColour * 0.114) > 186) {
-            holder.homeCardTextView.setTextColor(Color.BLACK);
-        } else {
-            holder.homeCardTextView.setTextColor(Color.WHITE);
-        }
         holder.homeCardTextView.setText(currentItem.getTextLabel());
         Picasso.with(holder.homeCardImageView.getContext())
                 .load(currentItem.getImageResourceUrl())
-                .placeholder(R.drawable.placeholder_image_loading)
+                .placeholder(currentItem.getImageResourceId())
                 .into(holder.homeCardImageView);
 
         if (position == (cardItemArrayList.size() - 1)) {
+            AppMember[] appMembers = new AppMember[5];
+            appMembers[0] = new AppMember(R.drawable.app_harsh_shah, R.string.app_member_harsh_shah);
+            appMembers[1] = new AppMember(R.drawable.app_yash_sheth, R.string.app_member_yash_sheth);
+            appMembers[2] = new AppMember(R.drawable.app_umang_patel, R.string.app_member_umang_patel);
+            appMembers[3] = new AppMember(R.drawable.app_yash_sodha, R.string.app_member_yash_sodha);
+            appMembers[4] = new AppMember(R.drawable.app_mitkumar_patel, R.string.app_member_mit_patel);
+
+            holder.appTeamCardView.setVisibility(View.VISIBLE);
+            holder.appTeamRecyclerView.setHasFixedSize(true);
+            LinearLayoutManager manager = new LinearLayoutManager(holder.appTeamCardView.getContext());
+            holder.appTeamRecyclerView.setLayoutManager(manager);
+            AppTeamRecyclerAdapter adapter = new AppTeamRecyclerAdapter(appMembers);
+            holder.appTeamRecyclerView.setAdapter(adapter);
+
             holder.kalashLayout.setVisibility(View.VISIBLE);
         } else {
             holder.kalashLayout.setVisibility(View.GONE);
+            holder.appTeamCardView.setVisibility(View.GONE);
         }
     }
 
@@ -83,14 +82,16 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
 
     class ItemsHolder extends RecyclerView.ViewHolder {
 
-        RelativeLayout homeTextCardLayout;
+        CardView appTeamCardView;
+        RecyclerView appTeamRecyclerView;
         LinearLayout kalashLayout;
         ImageView homeCardImageView;
         TextView homeCardTextView;
 
         ItemsHolder(View itemView) {
             super(itemView);
-            homeTextCardLayout = (RelativeLayout) itemView.findViewById(R.id.home_text_card_layout);
+            appTeamCardView = (CardView) itemView.findViewById(R.id.home_app_team_card_view);
+            appTeamRecyclerView = (RecyclerView) itemView.findViewById(R.id.home_app_team_recycler_view);
             kalashLayout = (LinearLayout) itemView.findViewById(R.id.kalash_layout);
             homeCardImageView = (ImageView) itemView.findViewById(R.id.home_image_card_image_view);
             homeCardTextView = (TextView) itemView.findViewById(R.id.home_text_card_text_view);

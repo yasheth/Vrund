@@ -17,11 +17,17 @@
     <string name="home_about_seven_string">Prizes and Awards will be awarded to best performance and best dressing participant. But before that don’t forget to register yourself.</string>
     <string name="instruction"><b>Instruction : \n</b>
         <ol>
-        <li>Traditional Dress Code is compulsary.\n</li> 
+        <li>Traditional Dress Code is compulsory.\n</li>
         <li>Bring ID Card for security Verification.\n</li>
         <li>Only Registered Students will be allowed to enter garba ground.\n</li> 
         <li>No type of nuisance will be entertained and Strict actions will be taken against the rule breakers.\n</li>
         </ol>
 	</string>
-    
+
+    <string name="app_member_harsh_shah">Harsh Shah, IT Dept.</string>
+    <string name="app_member_yash_sheth">Yash Sheth, IT Dept.</string>
+    <string name="app_member_umang_patel">Umang Patel, IT Dept.</string>
+    <string name="app_member_yash_sodha">Yash Sodha, CE Dept.</string>
+    <string name="app_member_mit_patel">Mit Patel, CE Dept.</string>
+
 </resources>
