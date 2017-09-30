@@ -1,8 +1,10 @@
 package charusat.vrund;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -24,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     public ViewPager viewPager;
     private Toolbar toolbar;
 
+    SharedPreferences sharedpreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
+        sharedpreferences = getSharedPreferences(SignUp.MyPREFERENCES, Context.MODE_PRIVATE);
     }
 
     public void onBackPressed() {
@@ -56,12 +62,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
                     case DialogInterface.BUTTON_POSITIVE: // Yes button clicked
-                        Toast.makeText(getApplicationContext(), "Successfully Logged Out", Toast.LENGTH_LONG).show();
-                        Intent i = new Intent(MainActivity.this, Login.class);
-                        startActivity(i);
+                        SharedPreferences.Editor editor = sharedpreferences.edit();
+                        editor.clear();
+                        editor.commit();
+                        android.os.Process.killProcess(android.os.Process.myPid());
                         finish();
                         break;
                     case DialogInterface.BUTTON_NEGATIVE: // No button clicked do nothing
+                        Toast.makeText(MainActivity.this, "Good Choice", Toast.LENGTH_LONG).show();
                         break;
                 }
             }
