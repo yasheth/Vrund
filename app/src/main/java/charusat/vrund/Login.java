@@ -35,6 +35,8 @@ public class Login extends AppCompatActivity {
     public static final String Rollno = "rollnoKey";
     public static final String ID = "idKey";
     public static final String Comp = "compKey";
+    public static final String Organiser = "organiserKey";
+
     SharedPreferences sharedpreferences;
 
     Intent i;
@@ -74,9 +76,15 @@ public class Login extends AppCompatActivity {
                                 editor.putString(Rollno, rollno);
                                 editor.putString(ID, dataSnapshot.child(rollno).child("p_id").getValue().toString());
                                 editor.putBoolean(Comp, (Boolean) dataSnapshot.child(rollno).child("ioc").getValue());
+                                editor.putBoolean(Organiser, (Boolean) dataSnapshot.child(rollno).child("organiser").getValue());
                                 editor.commit();
 
-                                i = new Intent(Login.this, MainActivity.class);
+                                if(sharedpreferences.getBoolean(Organiser, false)){
+                                    i = new Intent(Login.this, MainActivity_Organiser.class);
+
+                                } else {
+                                    i = new Intent(Login.this, MainActivity.class);
+                                }
                                 startActivity(i);
                                 finish();
 

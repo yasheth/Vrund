@@ -36,7 +36,7 @@ public class SignUp extends AppCompatActivity {
 
     private final String TAG = "Sign Up Fragment";
     String rollno, email, p_id, name, phone, gender, role;
-    boolean ioc;
+    boolean ioc, organiser = false;
     private EditText et_email;
     private EditText et_roll_num;
     private EditText et_name;
@@ -56,6 +56,8 @@ public class SignUp extends AppCompatActivity {
     public static final String Rollno = "rollnoKey";
     public static final String ID = "idKey";
     public static final String Comp = "compKey";
+    public static final String Organiser = "organiserKey";
+
     SharedPreferences sharedpreferences;
 
     @Override
@@ -164,7 +166,7 @@ public class SignUp extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"Already Registered",Toast.LENGTH_SHORT).show();
                     }
                     else{
-                        databaseRef.child(rollno).setValue(new User(email, name, phone, role, gender, ioc, p_id)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        databaseRef.child(rollno).setValue(new User(email, name, phone, role, gender, ioc, p_id, organiser)).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
 
@@ -174,6 +176,7 @@ public class SignUp extends AppCompatActivity {
                                 editor.putString(Rollno, rollno);
                                 editor.putString(ID, p_id);
                                 editor.putBoolean(Comp,ioc);
+                                editor.putBoolean(Organiser, organiser);
                                 editor.commit();
 
                                 Intent i = new Intent(SignUp.this, MainActivity.class);
