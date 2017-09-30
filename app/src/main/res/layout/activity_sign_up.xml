@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,25 +8,26 @@
     android:orientation="vertical"
     tools:context="charusat.vrund.SignUp">
 
-    <LinearLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/current_title"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:src="@drawable/vrundtext" />
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary">
-
-            <ImageView
-                android:id="@+id/current_title"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:src="@drawable/vrundtext" />
-        </android.support.v7.widget.Toolbar>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,7 +39,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="15dp"
                 android:gravity="center_horizontal"
                 android:text="R E G I S T E R"
                 android:textSize="25sp"
@@ -62,18 +63,6 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/et_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Email ID"
-                    android:inputType="textEmailAddress" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
                     android:id="@+id/et_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -81,64 +70,119 @@
                     android:inputType="text" />
             </android.support.design.widget.TextInputLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Gender: " />
-
-            <RadioGroup
-                android:id="@+id/radioGender"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <RadioButton
-                    android:id="@+id/radioMale"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="MALE" />
-
-                <RadioButton
-                    android:id="@+id/radioFemale"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="FEMALE" />
-
-            </RadioGroup>
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/et_mobile"
+                    android:id="@+id/et_phoneno"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Mobile No."
-                    android:inputType="number"
-                    android:maxLength="10" />
+                    android:hint="Mobile Number"
+                    android:inputType="phone" />
             </android.support.design.widget.TextInputLayout>
 
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email ID"
+                    android:inputType="textEmailAddress" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gender: "
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+
+                <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Male" />
+
+                    <RadioButton
+                        android:id="@+id/rb_female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Female" />
+                </RadioGroup>
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Role: "
+                    android:textSize="20sp" />
+
+                <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_student"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Student" />
+
+                    <RadioButton
+                        android:id="@+id/rb_faculty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Faculty" />
+                </RadioGroup>
+
+            </android.support.v7.widget.LinearLayoutCompat>
 
             <CheckBox
-                android:id="@+id/checkBox"
+                android:id="@+id/checkBox_ioc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="I'm interested in participating in competition. (Dressing/Performance)" />
+                android:layout_marginTop="2dp"
+                android:text="I'm interested in participating in competition.(Performance/Dressing)"
+                android:textSize="15sp" />
 
             <Button
                 android:id="@+id/bt_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:background="@color/colorPrimary"
                 android:text="REGISTER"
                 android:textColor="@color/textColorPrimary" />
+
 
             <TextView
                 android:id="@+id/tv_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clickable="true"
-                android:text="Already a member. Log In." />
-
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:text="Already a member? Log In here."
+                android:textSize="15sp" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -168,5 +212,5 @@
             </LinearLayout>
 
         </LinearLayout>
-    </LinearLayout>
-</android.support.v4.widget.NestedScrollView>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

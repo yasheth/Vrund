@@ -1,31 +1,32 @@
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    android:background="#ded5e8"
+    android:background="#F2F2F2"
     android:orientation="vertical"
     tools:context="charusat.vrund.Login">
 
-    <LinearLayout
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/current_title"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:src="@drawable/vrundtext" />
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary">
-
-            <ImageView
-                android:id="@+id/current_title"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:src="@drawable/vrundtext" />
-        </android.support.v7.widget.Toolbar>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -50,11 +51,11 @@
                 android:layout_marginTop="20dp">
 
                 <EditText
-                    android:id="@+id/et_email"
+                    android:id="@+id/et_rollno"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Registered Email ID"
-                    android:inputType="textEmailAddress" />
+                    android:hint="Roll No."
+                    android:inputType="text" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -66,7 +67,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Mobile No."
-                    android:inputType="number"
+                    android:inputType="phone"
                     android:maxLength="10" />
             </android.support.design.widget.TextInputLayout>
 
@@ -88,33 +89,13 @@
                 android:text="REGISTER"
                 android:textColor="@color/textColorPrimary" />
 
-            <LinearLayout
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="15dp"
-                android:layout_weight="3"
-                android:gravity="bottom|end"
-                android:orientation="horizontal">
+                android:layout_height="100dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/dandiya" />
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/k9" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/k3" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/k8" />
-            </LinearLayout>
 
         </LinearLayout>
-    </LinearLayout>
-</android.support.v4.widget.NestedScrollView>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

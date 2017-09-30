@@ -10,6 +10,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="MyMaterialThemeSplash" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">#000</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
     <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
         <item name="tabMaxWidth">@dimen/tab_max_width</item>
         <item name="tabIndicatorColor">@color/textColorPrimary</item>

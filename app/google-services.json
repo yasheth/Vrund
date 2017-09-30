@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "310664834907",
-    "firebase_url": "https://vrund-dscappteam.firebaseio.com",
-    "project_id": "vrund-dscappteam",
-    "storage_bucket": "vrund-dscappteam.appspot.com"
+    "project_number": "1045842540322",
+    "firebase_url": "https://vrund-2k17-dscappteam.firebaseio.com",
+    "project_id": "vrund-2k17-dscappteam",
+    "storage_bucket": "vrund-2k17-dscappteam.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:310664834907:android:c8b038712264eff6",
+        "mobilesdk_app_id": "1:1045842540322:android:c8b038712264eff6",
         "android_client_info": {
           "package_name": "charusat.vrund"
         }
       },
       "oauth_client": [
         {
-          "client_id": "310664834907-no5b8edsuqmgdu1kqhje4raf9nbq09vr.apps.googleusercontent.com",
+          "client_id": "1045842540322-2smq19nfj7b5njssgds43ibgpa1rf3jb.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB5-M7OsgYf-4ijiBGvB_G8pxrnqcElecA"
+          "current_key": "AIzaSyAOl9TMtAi5YVnyJwSDFh6HEilpjrCEf4Y"
         }
       ],
       "services": {
