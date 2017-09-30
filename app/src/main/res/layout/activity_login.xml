@@ -55,7 +55,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Roll No."
-                    android:inputType="text" />
+                    android:inputType="textCapCharacters" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
