@@ -1,6 +1,8 @@
 package charusat.vrund;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,7 +36,7 @@ public class SignUp extends AppCompatActivity {
 
     private final String TAG = "Sign Up Fragment";
     String rollno, email, p_id, name, phone, gender, role;
-    boolean ioc;
+    boolean ioc, organiser = false;
     private EditText et_email;
     private EditText et_roll_num;
     private EditText et_name;
@@ -49,10 +51,21 @@ public class SignUp extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference();
 
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    public static final String Name = "nameKey";
+    public static final String Rollno = "rollnoKey";
+    public static final String ID = "idKey";
+    public static final String Comp = "compKey";
+    public static final String Organiser = "organiserKey";
+
+    SharedPreferences sharedpreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
         et_email = (EditText) findViewById(R.id.et_email);
         et_roll_num = (EditText) findViewById(R.id.et_rollno);
@@ -144,6 +157,8 @@ public class SignUp extends AppCompatActivity {
         }
         if (flag == 0) {
             p_id = p_id + rollno;
+
+
             databaseRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -151,11 +166,20 @@ public class SignUp extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"Already Registered",Toast.LENGTH_SHORT).show();
                     }
                     else{
-                        databaseRef.child(rollno).setValue(new User(email, name, phone, role, gender, ioc, p_id)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        databaseRef.child(rollno).setValue(new User(email, name, phone, role, gender, ioc, p_id, organiser)).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                Toast.makeText(getApplicationContext(),"Registered Successfully",Toast.LENGTH_SHORT).show();
-                                Intent i = new Intent(SignUp.this, Login.class);
+
+                                SharedPreferences.Editor editor = sharedpreferences.edit();
+
+                                editor.putString(Name, name);
+                                editor.putString(Rollno, rollno);
+                                editor.putString(ID, p_id);
+                                editor.putBoolean(Comp,ioc);
+                                editor.putBoolean(Organiser, organiser);
+                                editor.commit();
+
+                                Intent i = new Intent(SignUp.this, MainActivity.class);
                                 startActivity(i);
                                 finish();
                             }
