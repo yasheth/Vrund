@@ -44,17 +44,18 @@ public class MainActivity extends AppCompatActivity {
         sharedpreferences = getSharedPreferences(SignUp.MyPREFERENCES, Context.MODE_PRIVATE);
     }
 
-    public void onBackPressed() {
-        alertMessage();
-    }
-
-
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new Home_Fragment(), "HOME");
         adapter.addFragment(new Schedule_Fragment(), "SCHEDULE");
         adapter.addFragment(new Profile_Fragment(), "PROFILE");
         viewPager.setAdapter(adapter);
+    }
+
+    /*
+
+    public void onBackPressed() {
+        alertMessage();
     }
 
     public void alertMessage() {
@@ -78,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Are you sure you want to Log Out?").setPositiveButton("Yes", dialogClickListener).setNegativeButton("No", dialogClickListener).show();
     }
+
+    */
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();

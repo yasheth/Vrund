@@ -84,13 +84,12 @@ public class Login extends AppCompatActivity {
                                     finish();
 
                                 } else {
-
-                                    Log.d(TAG, "Wrong Phone Number");
+                                    Toast.makeText(getApplicationContext(),"Wrong Roll / Phone Number",Toast.LENGTH_SHORT).show();
                                 }
 
 
                             } else {
-                                Log.d(TAG, "Wrong Roll Number");
+                                Toast.makeText(getApplicationContext(),"Wrong Roll / Phone Number",Toast.LENGTH_SHORT).show();
                             }
                         }
 
@@ -133,6 +132,7 @@ public class Login extends AppCompatActivity {
         }
     }
 
+    /*
     public void onBackPressed() {
         alertMessage();
     }
@@ -158,4 +158,5 @@ public class Login extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Are you sure you want to Exit? :(").setPositiveButton("Yes", dialogClickListener).setNegativeButton("No", dialogClickListener).show();
     }
+    */
 }

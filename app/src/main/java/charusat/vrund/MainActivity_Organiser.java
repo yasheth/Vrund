@@ -53,6 +53,8 @@ public class MainActivity_Organiser extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
+    /*
+
     public void onBackPressed() {
         alertMessage();
     }
@@ -78,6 +80,8 @@ public class MainActivity_Organiser extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Are you sure you want to Log Out?").setPositiveButton("Yes", dialogClickListener).setNegativeButton("No", dialogClickListener).show();
     }
+
+    */
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
