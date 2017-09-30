@@ -77,8 +77,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:background="@color/colorPrimaryDark"
-                android:text="LOGIN"
-                android:textColor="@color/textColorPrimary" />
+                android:textColor="@color/textColorPrimary"
+                android:text="LOGIN"/>
 
             <Button
                 android:id="@+id/bt_register"

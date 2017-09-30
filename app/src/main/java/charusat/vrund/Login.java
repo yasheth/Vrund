@@ -5,8 +5,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -32,6 +36,8 @@ public class Login extends AppCompatActivity {
 
     SharedPreferences sharedpreferences;
 
+
+
     Intent i;
 
     @Override
@@ -52,53 +58,62 @@ public class Login extends AppCompatActivity {
             login.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-
+                    int flag = 0;
                     final String rollno = rollNumber.getText().toString().trim();
                     final String phone = mobile.getText().toString().trim();
 
-                    databaseRef.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            if (dataSnapshot.hasChild(rollno)) {
-                                Log.d(TAG, phone + "   " + dataSnapshot.child(rollno).child("phone").getValue());
-                                if (dataSnapshot.child(rollno).child("phone").getValue().equals(phone)) {
+                    if (TextUtils.isEmpty(rollno)) {
+                        flag++;
+                        rollNumber.setError("Field is Empty");
+                    }
+                    if (TextUtils.isEmpty(phone)) {
+                        flag++;
+                        mobile.setError("Field is Empty");
+                    }
+                    if(flag == 0 && isNetworkAvailable()){
 
-                                    Log.d(TAG, dataSnapshot.child(rollno).child("name").getValue().toString());
 
-                                    SharedPreferences.Editor editor = sharedpreferences.edit();
-                                    editor.putString(SignUp.Name, dataSnapshot.child(rollno).child("name").getValue().toString());
-                                    editor.putString(SignUp.Rollno, rollno);
-                                    editor.putString(SignUp.ID, dataSnapshot.child(rollno).child("p_id").getValue().toString());
-                                    editor.putBoolean(SignUp.Comp, (Boolean) dataSnapshot.child(rollno).child("ioc").getValue());
-                                    editor.putBoolean(SignUp.Organiser, (Boolean) dataSnapshot.child(rollno).child("organiser").getValue());
-                                    editor.commit();
+                        databaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                if (dataSnapshot.hasChild(rollno)) {
+                                    Log.d(TAG, phone + "   " + dataSnapshot.child(rollno).child("phone").getValue());
+                                    if (dataSnapshot.child(rollno).child("phone").getValue().equals(phone)) {
 
-                                    if (sharedpreferences.getBoolean(SignUp.Organiser, false)) {
-                                        i = new Intent(Login.this, MainActivity_Organiser.class);
+                                        Log.d(TAG, dataSnapshot.child(rollno).child("name").getValue().toString());
+
+                                        SharedPreferences.Editor editor = sharedpreferences.edit();
+                                        editor.putString(SignUp.Name, dataSnapshot.child(rollno).child("name").getValue().toString());
+                                        editor.putString(SignUp.Rollno, rollno);
+                                        editor.putString(SignUp.ID, dataSnapshot.child(rollno).child("p_id").getValue().toString());
+                                        editor.putBoolean(SignUp.Comp, (Boolean) dataSnapshot.child(rollno).child("ioc").getValue());
+                                        editor.putBoolean(SignUp.Organiser, (Boolean) dataSnapshot.child(rollno).child("organiser").getValue());
+                                        editor.commit();
+
+                                        if (sharedpreferences.getBoolean(SignUp.Organiser, false)) {
+                                            i = new Intent(Login.this, MainActivity_Organiser.class);
+
+                                        } else {
+                                            i = new Intent(Login.this, MainActivity.class);
+                                        }
+                                        startActivity(i);
+                                        finish();
 
                                     } else {
-                                        i = new Intent(Login.this, MainActivity.class);
+                                        Toast.makeText(getApplicationContext(),"Wrong Roll / Phone Number",Toast.LENGTH_SHORT).show();
                                     }
-                                    startActivity(i);
-                                    finish();
+
 
                                 } else {
-
-                                    Log.d(TAG, "Wrong Phone Number");
+                                    Toast.makeText(getApplicationContext(),"Wrong Roll / Phone Number",Toast.LENGTH_SHORT).show();
                                 }
-
-
-                            } else {
-                                Log.d(TAG, "Wrong Roll Number");
                             }
-                        }
 
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
 
-                        }
-                    });
+                            }
+                        });
 
 
                     /*
@@ -110,7 +125,9 @@ public class Login extends AppCompatActivity {
                         i = new Intent(Login.this, MainActivity.class);
                     }
                     */
-
+                    } else{
+                        Toast.makeText(getApplicationContext(),"Fields are Empty or No Internet Connetion",Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
             register.setOnClickListener(new View.OnClickListener() {
@@ -129,10 +146,10 @@ public class Login extends AppCompatActivity {
             }
             startActivity(i);
             finish();
-
         }
     }
 
+    /*
     public void onBackPressed() {
         alertMessage();
     }
@@ -157,5 +174,13 @@ public class Login extends AppCompatActivity {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Are you sure you want to Exit? :(").setPositiveButton("Yes", dialogClickListener).setNegativeButton("No", dialogClickListener).show();
+    }
+    */
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }
