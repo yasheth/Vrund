@@ -64,6 +64,8 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
 
         if (position == (cardItemArrayList.size() - 1)) {
             holder.kalashLayout.setVisibility(View.VISIBLE);
+        } else {
+            holder.kalashLayout.setVisibility(View.GONE);
         }
     }
 

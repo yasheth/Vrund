@@ -18,16 +18,13 @@
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary">
 
-            <TextView
+            <ImageView
                 android:id="@+id/current_title"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="V R U N D"
-                android:textColor="@color/textColorPrimary"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+                android:src="@drawable/vrundtext" />
         </android.support.v7.widget.Toolbar>
 
         <LinearLayout
@@ -37,10 +34,11 @@
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin">
 
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="60dp"
                 android:gravity="center_horizontal"
                 android:text="L O G I N"
                 android:textSize="25sp"
@@ -52,11 +50,11 @@
                 android:layout_marginTop="20dp">
 
                 <EditText
-                    android:id="@+id/et_rollno"
+                    android:id="@+id/et_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Roll Number eg. 14IT126"
-                    android:inputType="textCapCharacters" />
+                    android:hint="Registered Email ID"
+                    android:inputType="textEmailAddress" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -64,11 +62,12 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/et_password"
+                    android:id="@+id/et_mobile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="password"
-                    android:inputType="textPassword" />
+                    android:hint="Mobile No."
+                    android:inputType="number"
+                    android:maxLength="10" />
             </android.support.design.widget.TextInputLayout>
 
             <Button
