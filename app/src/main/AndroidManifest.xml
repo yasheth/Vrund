@@ -17,7 +17,9 @@
         <activity android:name=".MainActivity_Organiser" />
         <activity android:name=".Login" />
         <activity android:name=".SignUp" />
-        <activity android:name=".SplashScreen">
+        <activity
+            android:name=".SplashScreen"
+            android:theme="@style/MyMaterialThemeSplash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

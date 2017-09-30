@@ -7,25 +7,25 @@ package charusat.vrund;
 public class User {
 
     public String email;
-    public String pass;
-    public String fname;
+    public String name;
     public String phone;
     public String role;
     public String gender;
     public  boolean ioc;
+    public String p_id;
 
     User(){
 
     }
 
-    User(String email, String pass, String fname, String phone,String role, String gender, boolean ioc){
+    User(String email, String name, String phone, String role, String gender, boolean ioc, String p_id) {
         this.email = email;
-        this.pass = pass;
-        this.fname = fname;
+        this.name = name;
         this.phone = phone;
         this.role = role;
         this.gender = gender;
         this.ioc = ioc;
+        this.p_id = p_id;
     }
 
 }
