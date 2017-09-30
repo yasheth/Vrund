@@ -81,7 +81,7 @@ public class Scanner_Fragment extends Fragment {
     private void setUpOthers() {
         barcodeDetector =
                 new BarcodeDetector.Builder(getContext())
-                        .setBarcodeFormats(Barcode.QR_CODE)
+                        .setBarcodeFormats(Barcode.ALL_FORMATS)
                         .build();
 
         cms = new CameraSource
