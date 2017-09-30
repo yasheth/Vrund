@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -44,6 +45,7 @@ public class SignUp extends AppCompatActivity {
     private RadioButton rb_female;
     private CheckBox cb_ioc;
     private Button register;
+    private TextView tv_login;
     private FirebaseAuth mAuth;
     private DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference();
 
@@ -66,6 +68,8 @@ public class SignUp extends AppCompatActivity {
 
         register = (Button) findViewById(R.id.bt_register);
 
+        tv_login = (TextView) findViewById(R.id.tv_login);
+
         mAuth = FirebaseAuth.getInstance();
 
         register.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +77,15 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View v) {
                 registerUser();
 
+            }
+        });
+
+        tv_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(SignUp.this, Login.class);
+                startActivity(i);
+                finish();
             }
         });
     }
