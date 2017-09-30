@@ -1,5 +1,8 @@
 package charusat.vrund;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,6 +14,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +45,30 @@ public class MainActivity_Organiser extends AppCompatActivity {
         adapter.addFragment(new Scanner_Fragment(), "SCANNER");
         adapter.addFragment(new Profile_Fragment(), "PROFILE");
         viewPager.setAdapter(adapter);
+    }
+
+    public void onBackPressed() {
+        alertMessage();
+    }
+
+    public void alertMessage() {
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE: // Yes button clicked
+                        Toast.makeText(getApplicationContext(), "Successfully Logged Out", Toast.LENGTH_LONG).show();
+                        Intent i = new Intent(MainActivity_Organiser.this, Login.class);
+                        startActivity(i);
+                        finish();
+                        break;
+                    case DialogInterface.BUTTON_NEGATIVE: // No button clicked do nothing
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Are you sure you want to Log Out?").setPositiveButton("Yes", dialogClickListener).setNegativeButton("No", dialogClickListener).show();
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
