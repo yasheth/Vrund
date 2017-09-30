@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -82,17 +84,22 @@ public class Profile_Fragment extends Fragment {
         sth_participate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(sth_participate.isChecked()){
-                    databaseRef.child(rollno).child("ioc").setValue(true);
-                    p_comp.setText("Participating in Dressing and Performance competitions");
-                    p_id.setVisibility(View.VISIBLE);
-                    p_id.setText("Participation Id : " + id);
+                if(isNetworkAvailable()){
+                    if(sth_participate.isChecked()){
+                        databaseRef.child(rollno).child("ioc").setValue(true);
+                        p_comp.setText("Participating in Dressing and Performance competitions");
+                        p_id.setVisibility(View.VISIBLE);
+                        p_id.setText("Participation Id : " + id);
 
-                } else{
-                    databaseRef.child(rollno).child("ioc").setValue(false);
-                    p_comp.setText("Not Participating in Dressing and Performance competitions");
-                    p_id.setVisibility(View.INVISIBLE);
+                    } else{
+                        databaseRef.child(rollno).child("ioc").setValue(false);
+                        p_comp.setText("Not Participating in Dressing and Performance competitions");
+                        p_id.setVisibility(View.INVISIBLE);
+                    }
+                }else{
+                    Toast.makeText(getActivity(),"No Internet Connection",Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
 
@@ -137,5 +144,13 @@ public class Profile_Fragment extends Fragment {
             p_id.setVisibility(View.INVISIBLE);
             sth_participate.setChecked(false);
         }
+    }
+
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }

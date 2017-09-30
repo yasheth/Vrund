@@ -3,6 +3,8 @@ package charusat.vrund;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -89,7 +91,12 @@ public class SignUp extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                registerUser();
+                if(isNetworkAvailable()){
+                    registerUser();
+                }else{
+                    Toast.makeText(getApplicationContext(),"No Internet Connection",Toast.LENGTH_SHORT).show();
+                }
+
 
             }
         });
@@ -160,7 +167,7 @@ public class SignUp extends AppCompatActivity {
             p_id = p_id + rollno;
 
 
-            databaseRef.addValueEventListener(new ValueEventListener() {
+            databaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     if(dataSnapshot.hasChild(rollno)){
@@ -221,5 +228,12 @@ public class SignUp extends AppCompatActivity {
 
     private boolean isValidMobile(String pass) {
         return pass != null && pass.length() == 10;
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }
