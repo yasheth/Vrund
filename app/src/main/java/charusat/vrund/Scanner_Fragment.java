@@ -13,6 +13,11 @@ import android.view.ViewGroup;
  * A simple {@link Fragment} subclass.
  */
 
+
+/**
+ * Only for Authorized persons
+ *
+ */
 public class Scanner_Fragment extends Fragment {
 
     public Scanner_Fragment(){
@@ -28,5 +33,6 @@ public class Scanner_Fragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
     }
 }
