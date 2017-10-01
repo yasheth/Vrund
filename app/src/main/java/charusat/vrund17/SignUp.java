@@ -8,6 +8,7 @@ import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -167,13 +168,16 @@ public class SignUp extends AppCompatActivity {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     if(dataSnapshot.hasChild(rollno)){
+                        progressDialog.hide();
                         Toast.makeText(getApplicationContext(),"Already Registered",Toast.LENGTH_SHORT).show();
                     }
                     else{
+                        Log.d(TAG, "Sign UP");
                         databaseRef.child(rollno).setValue(new User(email, name, phone, role, gender, ioc, p_id, organiser)).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
 
+                                progressDialog.hide();
                                 SharedPreferences.Editor editor = sharedpreferences.edit();
 
                                 editor.putString(Name, name);
@@ -186,6 +190,8 @@ public class SignUp extends AppCompatActivity {
                                 Intent i = new Intent(SignUp.this, MainActivity.class);
                                 startActivity(i);
                                 finish();
+                                Log.d(TAG, "Success");
+
                             }
                         });
                     }

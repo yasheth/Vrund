@@ -72,7 +72,7 @@ public class Login extends AppCompatActivity {
                                 if (dataSnapshot.hasChild(rollno)) {
                                     Log.d(TAG, phone + "   " + dataSnapshot.child(rollno).child("phone").getValue());
                                     if (dataSnapshot.child(rollno).child("phone").getValue().equals(phone)) {
-
+                                        progressDialog.hide();
                                         Log.d(TAG, dataSnapshot.child(rollno).child("name").getValue().toString());
 
                                         SharedPreferences.Editor editor = sharedpreferences.edit();
@@ -93,11 +93,13 @@ public class Login extends AppCompatActivity {
                                         finish();
 
                                     } else {
+                                        progressDialog.hide();
                                         Toast.makeText(getApplicationContext(),"Wrong Roll / Phone Number",Toast.LENGTH_SHORT).show();
                                     }
 
 
                                 } else {
+                                    progressDialog.hide();
                                     Toast.makeText(getApplicationContext(),"Wrong Roll / Phone Number",Toast.LENGTH_SHORT).show();
                                 }
                             }
