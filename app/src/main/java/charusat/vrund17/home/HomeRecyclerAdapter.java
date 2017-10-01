@@ -23,7 +23,7 @@ import charusat.vrund17.R;
 
 public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapter.ItemsHolder> {
 
-    ArrayList<CardItem> cardItemArrayList;
+    private ArrayList<CardItem> cardItemArrayList;
 
     public HomeRecyclerAdapter(ArrayList<CardItem> cardItemArrayList) {
         //Default constructor
