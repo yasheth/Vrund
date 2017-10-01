@@ -42,8 +42,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
         CardItem currentItem = cardItemArrayList.get(position);
         holder.homeCardTextView.setText(currentItem.getTextLabel());
         Picasso.with(holder.homeCardImageView.getContext())
-                .load(currentItem.getImageResourceUrl())
-                .placeholder(currentItem.getImageResourceId())
+                .load(currentItem.getImageResourceId())
                 .into(holder.homeCardImageView);
 
         if (position == (cardItemArrayList.size() - 1)) {
