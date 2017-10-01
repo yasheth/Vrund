@@ -7,7 +7,7 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
-        applicationId "charusat.vrund"
+        applicationId "charusat.vrund17"
         minSdkVersion 19
         targetSdkVersion 25
         versionCode 1

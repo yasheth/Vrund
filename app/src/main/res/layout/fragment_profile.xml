@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin_more"
     android:paddingRight="@dimen/activity_horizontal_margin_more"
-    tools:context="charusat.vrund.Home_Fragment">
+    tools:context="charusat.vrund17.Home_Fragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -76,15 +76,15 @@
                     android:id="@+id/p_comp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/p_rollno"
+                    android:layout_toStartOf="@+id/sth_participate"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:paddingTop="10dp"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_below="@+id/p_rollno"
-                    android:layout_alignParentStart="true"
-                    android:layout_toStartOf="@+id/sth_participate" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/p_id"
@@ -103,9 +103,9 @@
                     android:id="@+id/sth_participate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=""
+                    android:layout_above="@+id/p_id"
                     android:layout_alignParentEnd="true"
-                    android:layout_above="@+id/p_id" />
+                    android:text="" />
 
             </RelativeLayout>
 

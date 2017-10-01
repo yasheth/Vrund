@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="charusat.vrund">
+    package="charusat.vrund17">
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -16,12 +16,12 @@
         android:roundIcon="@drawable/v17"
         android:supportsRtl="true"
         android:theme="@style/MyMaterialTheme">
-        <activity android:name=".MainActivity" />
-        <activity android:name=".MainActivity_Organiser" />
-        <activity android:name=".Login" />
-        <activity android:name=".SignUp" />
+        <activity android:name="charusat.vrund17.MainActivity" />
+        <activity android:name="charusat.vrund17.MainActivity_Organiser" />
+        <activity android:name="charusat.vrund17.Login" />
+        <activity android:name="charusat.vrund17.SignUp" />
         <activity
-            android:name=".SplashScreen"
+            android:name="charusat.vrund17.SplashScreen"
             android:theme="@style/MyMaterialThemeSplash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
