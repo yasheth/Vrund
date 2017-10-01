@@ -4,6 +4,9 @@ android {
     compileSdkVersion 25
     buildToolsVersion "26.0.0"
     defaultConfig {
+        vectorDrawables {
+            useSupportLibrary = true
+        }
         applicationId "charusat.vrund"
         minSdkVersion 19
         targetSdkVersion 25
@@ -14,8 +17,10 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            shrinkResources true
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
         }
     }
 }
@@ -38,6 +43,7 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.google.android.gms:play-services:10.0.1'
     testCompile 'junit:junit:4.12'
+    compile 'com.github.codechimp-org.apprater:library:1.0.+'
     compile 'com.android.support:multidex:1.0.0'
 }
 apply plugin: 'com.google.gms.google-services'

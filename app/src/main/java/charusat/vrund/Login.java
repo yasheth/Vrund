@@ -68,7 +68,7 @@ public class Login extends AppCompatActivity {
                         mobile.setError("Field is Empty");
                     }
                     if(flag == 0 && isNetworkAvailable()){
-                        progressDialog.setMessage("Registering. Please Wait...");
+                        progressDialog.setMessage("Logging In. Please Wait...");
                         progressDialog.show();
 
 

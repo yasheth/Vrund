@@ -17,6 +17,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
+import org.codechimp.apprater.AppRater;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,15 +41,18 @@ public class MainActivity extends AppCompatActivity {
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
-
+        AppRater.setNumDaysForRemindLater(1);
+        AppRater.setDontRemindButtonVisible(false);
+        AppRater.app_launched(this);
         sharedpreferences = getSharedPreferences(SignUp.MyPREFERENCES, Context.MODE_PRIVATE);
     }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new Home_Fragment(), "HOME");
-        adapter.addFragment(new Schedule_Fragment(), "SCHEDULE");
         adapter.addFragment(new Profile_Fragment(), "PROFILE");
+        adapter.addFragment(new Schedule_Fragment(), "SCHEDULE");
+        adapter.addFragment(new Home_Fragment(), "ABOUT");
+
         viewPager.setAdapter(adapter);
     }
 
