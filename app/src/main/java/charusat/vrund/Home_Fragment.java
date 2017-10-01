@@ -37,6 +37,7 @@ public class Home_Fragment extends Fragment {
         RecyclerView homeRecyclerView = (RecyclerView) inflateView.findViewById(R.id.home_recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(inflateView.getContext());
         homeRecyclerView.setLayoutManager(layoutManager);
+        homeRecyclerView.setNestedScrollingEnabled(false);
         HomeRecyclerAdapter adapter = new HomeRecyclerAdapter(cardItemArrayList);
         homeRecyclerView.setAdapter(adapter);
         return inflateView;
@@ -45,14 +46,12 @@ public class Home_Fragment extends Fragment {
 
     private void setArrayListItems() {
 
-        cardItemArrayList.add(new CardItem("http://vrund.in/wp-content/uploads/2016/07/14716357_910830349019067_3354529134917386913_n.jpg", R.drawable.home_image_1, R.string.home_title_string));
+        cardItemArrayList.add(new CardItem("http://vrund.in/wp-content/uploads/2016/07/v16-p6.png", R.drawable.home_image_5, R.string.home_title_string));
         cardItemArrayList.add(new CardItem("http://vrund.in/wp-content/uploads/2016/07/14589745_910830605685708_7534554031571171969_o.jpg", R.drawable.home_image_2, R.string.home_about_one_string));
         cardItemArrayList.add(new CardItem("http://vrund.in/wp-content/uploads/2016/07/v16-p8.png", R.drawable.home_image_3, R.string.home_about_two_string));
         cardItemArrayList.add(new CardItem("http://vrund.in/wp-content/uploads/2016/07/v16-p4.png ", R.drawable.home_image_4, R.string.home_about_three_string));
-        cardItemArrayList.add(new CardItem("http://vrund.in/wp-content/uploads/2016/07/v16-p6.png", R.drawable.home_image_5, R.string.home_about_four_string));
+        cardItemArrayList.add(new CardItem("http://vrund.in/wp-content/uploads/2016/07/14716357_910830349019067_3354529134917386913_n.jpg", R.drawable.home_image_1, R.string.home_about_four_string));
         cardItemArrayList.add(new CardItem("http://vrund.in/wp-content/uploads/2016/07/v16-p2.png", R.drawable.home_image_6, R.string.home_about_five_string));
-        cardItemArrayList.add(new CardItem("http://vrund.in/wp-content/uploads/2016/07/v16-p7.png", R.drawable.home_image_7, R.string.home_about_six_string));
-        cardItemArrayList.add(new CardItem("http://vrund.in/wp-content/uploads/2016/07/v16-p5.png", R.drawable.home_image_8, R.string.home_about_seven_string));
     }
 
 }

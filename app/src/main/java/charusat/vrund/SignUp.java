@@ -114,8 +114,8 @@ public class SignUp extends AppCompatActivity {
     private void registerUser() {
         int flag = 0;
         email = et_email.getText().toString().trim();
-        rollno = et_roll_num.getText().toString().trim();
-        name = et_name.getText().toString().trim();
+        rollno = et_roll_num.getText().toString().toUpperCase().trim();
+        name = et_name.getText().toString().toUpperCase().trim();
         phone = et_phoneno.getText().toString().trim();
         gender = null;
         role = null;

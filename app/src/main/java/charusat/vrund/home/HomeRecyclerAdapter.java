@@ -48,10 +48,10 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
 
         if (position == (cardItemArrayList.size() - 1)) {
             AppMember[] appMembers = new AppMember[5];
-            appMembers[0] = new AppMember(R.drawable.app_harsh_shah, R.string.app_member_harsh_shah);
-            appMembers[1] = new AppMember(R.drawable.app_yash_sheth, R.string.app_member_yash_sheth);
-            appMembers[2] = new AppMember(R.drawable.app_umang_patel, R.string.app_member_umang_patel);
-            appMembers[3] = new AppMember(R.drawable.app_yash_sodha, R.string.app_member_yash_sodha);
+            appMembers[0] = new AppMember(R.drawable.app_yash_sheth, R.string.app_member_yash_sheth);
+            appMembers[1] = new AppMember(R.drawable.app_harsh_shah, R.string.app_member_harsh_shah);
+            appMembers[2] = new AppMember(R.drawable.app_yash_sodha, R.string.app_member_yash_sodha);
+            appMembers[3] = new AppMember(R.drawable.app_umang_patel, R.string.app_member_umang_patel);
             appMembers[4] = new AppMember(R.drawable.app_mitkumar_patel, R.string.app_member_mit_patel);
 
             holder.appTeamCardView.setVisibility(View.VISIBLE);
@@ -95,6 +95,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
             kalashLayout = (LinearLayout) itemView.findViewById(R.id.kalash_layout);
             homeCardImageView = (ImageView) itemView.findViewById(R.id.home_image_card_image_view);
             homeCardTextView = (TextView) itemView.findViewById(R.id.home_text_card_text_view);
+            appTeamRecyclerView.setNestedScrollingEnabled(false);
         }
     }
 }
