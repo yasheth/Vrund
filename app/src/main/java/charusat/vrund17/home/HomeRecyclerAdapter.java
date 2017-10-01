@@ -1,4 +1,4 @@
-package charusat.vrund.home;
+package charusat.vrund17.home;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -13,7 +13,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import charusat.vrund.R;
+import charusat.vrund17.R;
+
 
 /**
  * Created by iharsh on 28/9/17.
@@ -22,7 +23,7 @@ import charusat.vrund.R;
 
 public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapter.ItemsHolder> {
 
-    private ArrayList<CardItem> cardItemArrayList;
+    ArrayList<CardItem> cardItemArrayList;
 
     public HomeRecyclerAdapter(ArrayList<CardItem> cardItemArrayList) {
         //Default constructor
