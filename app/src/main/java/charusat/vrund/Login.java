@@ -1,6 +1,7 @@
 package charusat.vrund;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -27,24 +28,20 @@ import org.w3c.dom.Text;
 
 public class Login extends AppCompatActivity {
 
+    private final String TAG = "Login";
     Button register, login;
     TextView rollNumber, mobile;
-
-    private DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference();
-
-    private final String TAG = "Login";
-
     SharedPreferences sharedpreferences;
-
-
-
     Intent i;
+    private DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference();
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        progressDialog = new ProgressDialog(this);
         sharedpreferences = getSharedPreferences(SignUp.MyPREFERENCES, Context.MODE_PRIVATE);
         String  x = sharedpreferences.getString(SignUp.Rollno,null);
         if(sharedpreferences.getString(SignUp.Rollno,null) == null) {
@@ -71,6 +68,8 @@ public class Login extends AppCompatActivity {
                         mobile.setError("Field is Empty");
                     }
                     if(flag == 0 && isNetworkAvailable()){
+                        progressDialog.setMessage("Registering. Please Wait...");
+                        progressDialog.show();
 
 
                         databaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -125,8 +124,9 @@ public class Login extends AppCompatActivity {
                         i = new Intent(Login.this, MainActivity.class);
                     }
                     */
-                    } else{
-                        Toast.makeText(getApplicationContext(),"Fields are Empty or No Internet Connetion",Toast.LENGTH_SHORT).show();
+                    }
+                    if (!isNetworkAvailable()) {
+                        Toast.makeText(getApplicationContext(), "Check Internet Connectivity", Toast.LENGTH_SHORT).show();
                     }
                 }
             });

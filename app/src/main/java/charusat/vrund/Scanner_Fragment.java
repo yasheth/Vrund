@@ -68,11 +68,12 @@ public class Scanner_Fragment extends Fragment {
     Button download_php;
     Button check;
     SharedPreferences sharedpreferences;
+    ArrayList<String> al;
+
 
     public Scanner_Fragment() {
 
     }
-
 
     @Nullable
     @Override
@@ -125,13 +126,13 @@ public class Scanner_Fragment extends Fragment {
 
     private void checksss()
     {
-        String r = barcodeInfo.getText().toString().trim();
+        String r = barcodeInfo.getText().toString().toUpperCase().trim();
 
-        String message = "Participant not found in database";
+        String message = "Participant NOT FOUND \uD83D\uDE13";
 
         if(al.contains(r))
         {
-            message = "Paricipant found ☺";
+            message = "Participant FOUND ☺";
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setMessage(message).setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -326,7 +327,6 @@ public class Scanner_Fragment extends Fragment {
         }
     }
 
-
     private void setInsideSharedPrefs(String ss)
     {
         SharedPreferences.Editor editor = sharedpreferences.edit();
@@ -334,7 +334,7 @@ public class Scanner_Fragment extends Fragment {
         editor.commit();
 
     }
-    ArrayList<String> al;
+
     private void loadFromSharedPrefs()
     {
         al = new ArrayList<>();

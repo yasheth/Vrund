@@ -1,5 +1,6 @@
 package charusat.vrund;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -36,9 +37,16 @@ import java.util.regex.Pattern;
 
 public class SignUp extends AppCompatActivity {
 
+    public static final String MyPREFERENCES = "MyPrefs";
+    public static final String Name = "nameKey";
+    public static final String Rollno = "rollnoKey";
+    public static final String ID = "idKey";
+    public static final String Comp = "compKey";
+    public static final String Organiser = "organiserKey";
     private final String TAG = "Sign Up Fragment";
     String rollno, email, p_id, name, phone, gender, role;
     boolean ioc, organiser = false;
+    SharedPreferences sharedpreferences;
     private EditText et_email;
     private EditText et_roll_num;
     private EditText et_name;
@@ -50,18 +58,9 @@ public class SignUp extends AppCompatActivity {
     private CheckBox cb_ioc;
     private Button register;
     private TextView tv_login;
-
+    private ProgressDialog progressDialog;
     private FirebaseAuth mAuth;
     private DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference();
-
-    public static final String MyPREFERENCES = "MyPrefs" ;
-    public static final String Name = "nameKey";
-    public static final String Rollno = "rollnoKey";
-    public static final String ID = "idKey";
-    public static final String Comp = "compKey";
-    public static final String Organiser = "organiserKey";
-
-    SharedPreferences sharedpreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +87,7 @@ public class SignUp extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        progressDialog = new ProgressDialog(this);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,6 +105,7 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(SignUp.this, Login.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
                 finish();
             }
@@ -164,6 +165,9 @@ public class SignUp extends AppCompatActivity {
             et_email.setError("Enter Valid email id");
         }
         if (flag == 0) {
+            progressDialog.setMessage("Registering. Please Wait...");
+            progressDialog.show();
+
             p_id = p_id + rollno;
 
 

@@ -24,9 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
     public TabLayout tabLayout;
     public ViewPager viewPager;
-    private Toolbar toolbar;
-
     SharedPreferences sharedpreferences;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +65,8 @@ public class MainActivity extends AppCompatActivity {
                         SharedPreferences.Editor editor = sharedpreferences.edit();
                         editor.clear();
                         editor.commit();
-                        android.os.Process.killProcess(android.os.Process.myPid());
+                        Intent i = new Intent(MainActivity.this, Login.class);
+                        startActivity(i);
                         finish();
                         break;
                     case DialogInterface.BUTTON_NEGATIVE: // No button clicked do nothing
