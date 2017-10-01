@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#ded5e8"
     android:orientation="vertical"
-    tools:context="charusat.vrund.Home_Fragment"
+    tools:context="charusat.vrund17.Home_Fragment"
     tools:paddingEnd="16dp"
     tools:paddingStart="16dp"
     tools:paddingTop="16dp">

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#ded5e8"
     android:orientation="vertical"
-    tools:context="charusat.vrund.SignUp">
+    tools:context="charusat.vrund17.SignUp">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -79,7 +79,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Mobile Number"
-                    android:inputType="phone" />
+                    android:inputType="phone"
+                    android:maxLength="10" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
