@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new Profile_Fragment(), "PROFILE");
         adapter.addFragment(new Schedule_Fragment(), "SCHEDULE");
+        adapter.addFragment(new Profile_Fragment(), "PROFILE");
         adapter.addFragment(new Home_Fragment(), "ABOUT");
 
         viewPager.setAdapter(adapter);
