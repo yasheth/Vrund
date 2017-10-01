@@ -93,14 +93,15 @@ public class Login extends AppCompatActivity {
                                         finish();
 
                                     } else {
-                                        progressDialog.hide();
+
                                         Toast.makeText(getApplicationContext(),"Wrong Roll / Phone Number",Toast.LENGTH_SHORT).show();
+                                        progressDialog.cancel();
                                     }
 
 
                                 } else {
-                                    progressDialog.hide();
                                     Toast.makeText(getApplicationContext(),"Wrong Roll / Phone Number",Toast.LENGTH_SHORT).show();
+                                    progressDialog.cancel();
                                 }
                             }
 
