@@ -364,7 +364,7 @@ public class Scanner_Fragment extends Fragment {
 
 
         protected void onPreExecute() {
-            this.dialog.setMessage("Progress start");
+            this.dialog.setMessage("Downloading...");
             this.dialog.show();
         }
 

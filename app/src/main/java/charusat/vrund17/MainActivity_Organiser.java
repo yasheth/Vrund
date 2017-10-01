@@ -42,8 +42,8 @@ public class MainActivity_Organiser extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new Scanner_Fragment(), "SCANNER");
         adapter.addFragment(new Profile_Fragment(), "PROFILE");
+        adapter.addFragment(new Scanner_Fragment(), "SCANNER");
         adapter.addFragment(new Home_Fragment(), "ABOUT");
         viewPager.setAdapter(adapter);
     }
