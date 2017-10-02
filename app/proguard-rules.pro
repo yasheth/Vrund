@@ -27,3 +27,4 @@
 -dontwarn com.squareup.okhttp.**
 -dontwarn com.squareup.picasso.**
 -dontwarn com.squareup.okhttp.internal.**
+-keep public class charusat.vrund17.User.*
