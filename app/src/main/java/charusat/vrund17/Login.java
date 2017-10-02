@@ -95,12 +95,14 @@ public class Login extends AppCompatActivity {
                                     } else {
 
                                         Toast.makeText(getApplicationContext(),"Wrong Roll / Phone Number",Toast.LENGTH_SHORT).show();
+                                        progressDialog.dismiss();
                                         progressDialog.cancel();
                                     }
 
 
                                 } else {
                                     Toast.makeText(getApplicationContext(),"Wrong Roll / Phone Number",Toast.LENGTH_SHORT).show();
+                                    progressDialog.dismiss();
                                     progressDialog.cancel();
                                 }
                             }

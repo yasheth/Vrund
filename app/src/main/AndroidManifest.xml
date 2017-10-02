@@ -18,8 +18,12 @@
         android:theme="@style/MyMaterialTheme">
         <activity android:name="charusat.vrund17.MainActivity" />
         <activity android:name="charusat.vrund17.MainActivity_Organiser" />
-        <activity android:name="charusat.vrund17.Login" />
-        <activity android:name="charusat.vrund17.SignUp" />
+        <activity
+            android:name="charusat.vrund17.Login"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+        <activity
+            android:name="charusat.vrund17.SignUp"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity
             android:name="charusat.vrund17.SplashScreen"
             android:theme="@style/MyMaterialThemeSplash">
