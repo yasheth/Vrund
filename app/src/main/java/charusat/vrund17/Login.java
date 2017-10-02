@@ -61,54 +61,56 @@ public class Login extends AppCompatActivity {
                         flag++;
                         mobile.setError("Field is Empty");
                     }
-                    if(flag == 0 && isNetworkAvailable()){
+                    if(flag == 0 && isNetworkAvailable())
+                    {
                         progressDialog.setMessage("Logging In. Please Wait...");
                         progressDialog.show();
 
+                        DatabaseReference db_roll = databaseRef.child(rollno);
 
-                        databaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        db_roll.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                if (dataSnapshot.hasChild(rollno)) {
-                                    Log.d(TAG, phone + "   " + dataSnapshot.child(rollno).child("phone").getValue());
-                                    if (dataSnapshot.child(rollno).child("phone").getValue().equals(phone)) {
-                                        progressDialog.hide();
-                                        Log.d(TAG, dataSnapshot.child(rollno).child("name").getValue().toString());
-
-                                        SharedPreferences.Editor editor = sharedpreferences.edit();
-                                        editor.putString(SignUp.Name, dataSnapshot.child(rollno).child("name").getValue().toString());
-                                        editor.putString(SignUp.Rollno, rollno);
-                                        editor.putString(SignUp.ID, dataSnapshot.child(rollno).child("p_id").getValue().toString());
-                                        editor.putBoolean(SignUp.Comp, (Boolean) dataSnapshot.child(rollno).child("ioc").getValue());
-                                        editor.putBoolean(SignUp.Organiser, (Boolean) dataSnapshot.child(rollno).child("organiser").getValue());
-                                        editor.commit();
-
-                                        if (sharedpreferences.getBoolean(SignUp.Organiser, false)) {
-                                            i = new Intent(Login.this, MainActivity_Organiser.class);
-
-                                        } else {
-                                            i = new Intent(Login.this, MainActivity.class);
-                                        }
-                                        startActivity(i);
-                                        finish();
-
-                                    } else {
-
-                                        Toast.makeText(getApplicationContext(),"Wrong Roll / Phone Number",Toast.LENGTH_SHORT).show();
-                                        progressDialog.dismiss();
-                                        progressDialog.cancel();
-                                    }
-
-
-                                } else {
-                                    Toast.makeText(getApplicationContext(),"Wrong Roll / Phone Number",Toast.LENGTH_SHORT).show();
+                            public void onDataChange(DataSnapshot dataSnapshot)
+                            {
+                                Object o = dataSnapshot.child("phone").getValue();
+                                if (o == null)
+                                {
+                                    Toast.makeText(Login.this, "Wrong Roll Number", Toast.LENGTH_SHORT).show();
                                     progressDialog.dismiss();
                                     progressDialog.cancel();
+                                    return;
                                 }
+                                else if (o.equals(phone))
+                                {
+                                    Log.d(TAG, dataSnapshot.child("name").getValue().toString());
+
+                                    SharedPreferences.Editor editor = sharedpreferences.edit();
+                                    editor.putString(SignUp.Name, dataSnapshot.child("name").getValue().toString());
+                                    editor.putString(SignUp.Rollno, rollno);
+                                    editor.putString(SignUp.ID, dataSnapshot.child("p_id").getValue().toString());
+                                    editor.putBoolean(SignUp.Comp, (Boolean) dataSnapshot.child("ioc").getValue());
+                                    editor.putBoolean(SignUp.Organiser, (Boolean) dataSnapshot.child("organiser").getValue());
+                                    editor.commit();
+                                }
+                                else
+                                {
+                                    Toast.makeText(getApplicationContext(), "Wrong Phone Number", Toast.LENGTH_SHORT).show();
+                                }
+                                if (sharedpreferences.getBoolean(SignUp.Organiser, false))
+                                {
+                                    i = new Intent(Login.this, MainActivity_Organiser.class);
+                                } else {
+                                    i = new Intent(Login.this, MainActivity.class);
+                                }
+                                progressDialog.dismiss();
+                                progressDialog.cancel();
+                                startActivity(i);
+                                finish();
                             }
 
                             @Override
                             public void onCancelled(DatabaseError databaseError) {
+                                Toast.makeText(Login.this, "Error", Toast.LENGTH_SHORT).show();
 
                             }
                         });
