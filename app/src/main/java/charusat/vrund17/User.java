@@ -6,7 +6,6 @@ package charusat.vrund17;
 
 public class User
 {
-
     public String email;
     public String name;
     public String phone;

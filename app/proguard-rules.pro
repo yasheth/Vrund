@@ -23,8 +23,9 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
--keep public class User
+#-keep public class charusat.vrund17.User.** { *; }
+-keep public class charusat.vrund17.User { *; }
 -keep class com.squareup.okhttp.** { *; }
 -dontwarn com.squareup.okhttp.**
 -dontwarn com.squareup.picasso.**
--dontwarn com.squareup.okhttp.internal.**
+-dontwarn com.squareup.okhettp.internal.**
