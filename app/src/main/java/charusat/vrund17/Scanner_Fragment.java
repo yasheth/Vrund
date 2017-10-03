@@ -333,7 +333,7 @@ public class Scanner_Fragment extends Fragment {
                 JSONArray ja = new JSONArray(sharedpreferences.getString("allids", ""));
                 for (int i=0; i<ja.length(); i++)
                 {
-                    String ele = (String)ja.get(i);
+                    String ele = ja.get(i).toString();
                     al.add(ele);
                 }
             }

@@ -48,7 +48,8 @@ public class Login extends AppCompatActivity {
 
             login.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v)
+                {
                     int flag = 0;
                     final String rollno = rollNumber.getText().toString().trim();
                     final String phone = mobile.getText().toString().trim();
@@ -66,6 +67,7 @@ public class Login extends AppCompatActivity {
                         progressDialog.setMessage("Logging In. Please Wait...");
                         progressDialog.show();
 
+                        final Boolean[] logged_in = {false};
                         DatabaseReference db_roll = databaseRef.child(rollno);
 
                         db_roll.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -82,6 +84,7 @@ public class Login extends AppCompatActivity {
                                 }
                                 else if (o.equals(phone))
                                 {
+                                    logged_in[0] = true;
                                     Log.d(TAG, dataSnapshot.child("name").getValue().toString());
 
                                     SharedPreferences.Editor editor = sharedpreferences.edit();
@@ -95,23 +98,35 @@ public class Login extends AppCompatActivity {
                                 else
                                 {
                                     Toast.makeText(getApplicationContext(), "Wrong Phone Number", Toast.LENGTH_SHORT).show();
+                                    progressDialog.dismiss();
+                                    progressDialog.cancel();
+                                    return;
                                 }
-                                if (sharedpreferences.getBoolean(SignUp.Organiser, false))
+
+                                if (logged_in[0])
                                 {
-                                    i = new Intent(Login.this, MainActivity_Organiser.class);
-                                } else {
-                                    i = new Intent(Login.this, MainActivity.class);
+                                    if(sharedpreferences.getBoolean(SignUp.Organiser, false))
+                                    {
+                                        i = new Intent(Login.this, MainActivity_Organiser.class);
+                                    }
+                                    else
+                                    {
+                                        i = new Intent(Login.this, MainActivity.class);
+                                    }
+                                    progressDialog.dismiss();
+                                    progressDialog.cancel();
+                                    startActivity(i);
                                 }
                                 progressDialog.dismiss();
                                 progressDialog.cancel();
-                                startActivity(i);
                                 finish();
                             }
 
                             @Override
                             public void onCancelled(DatabaseError databaseError) {
-                                Toast.makeText(Login.this, "Error", Toast.LENGTH_SHORT).show();
-
+                                progressDialog.dismiss();
+                                progressDialog.cancel();
+                                Toast.makeText(Login.this, "Sorry, unexpected error", Toast.LENGTH_SHORT).show();
                             }
                         });
 

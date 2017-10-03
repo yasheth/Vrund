@@ -4,7 +4,8 @@ package charusat.vrund17;
  * Created by Harsh Shah on 29/09/2017.
  */
 
-public class User {
+public class User
+{
 
     public String email;
     public String name;
